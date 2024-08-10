@@ -1,0 +1,48 @@
+{
+  "name": "Wordle Hint",
+  "author": "pguardiario@gmail.com",
+  "manifest_version": 3,
+  "version": "1.0.1",
+  "description": "Get a hint when you're stuck at Wordle",
+  "action": {
+    "default_icon": {
+      "128": "icon.png"
+    },
+    "default_popup": "index.html"
+  },
+  "icons": {
+    "128": "icon.png"
+  },
+
+  "host_permissions": [
+    "http://*/",
+    "https://*/"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "injected.js"
+      ],
+      "matches": [
+        "https://www.nytimes.com/*"
+      ]
+    }
+  ],
+  "content_scripts": [
+    {
+      "js": [
+        "content.js",
+        "inject.js"
+      ],
+      "matches": [
+        "https://www.nytimes.com/*"
+      ]
+    }
+  ],
+  "permissions": [
+    "tabs"
+  ]
+}
